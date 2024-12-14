@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section>
+    <div class="container flex">
+      <div class="left">
+        <div class="main_image">
+            <img src="image/img1.jpg" class="slide">
+          </div>
+          <div class="option flex">
+            <img src="image/img1.jpg" alt="Image 1">
+            <img src="image/img2.jpg" alt="Image 2">
+            <img src="image/img3.jpg" alt="Image 3">
+            <img src="image/img4.jpg" alt="Image 4">
+            <img src="image/img5.jpg" alt="Image 5">
+            <img src="image/img6.jpg" alt="Image 6">
+        </div>
+      </div>
+      <div class="right">
+        <h3>Beats Solo3 Wireless</h3>
+        <h4> $895 </h4>
+        <p>Experience premium sound with the Beats Solo3 Wireless Headphones. These stylish and comfortable on-ear headphones deliver exceptional audio quality.</p>
+        <h5>Colour: Rosegold</h5>
+        <div class="color flex1">
+          <span class="color-option" style="background: #000;"></span>
+          <span class="color-option" style="background: #EDEDED;"></span>
+          <span class="color-option" style="background: #D5D6D8;"></span>
+          <span class="color-option" style="background: #EFE0DE;"></span>
+          <span class="color-option" style="background: #AB8ED1;"></span>
+          <span class="color-option" style="background: #F04D44;"></span>
+        </div>
+        <button id="addToCartButton">Add to cart</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Ensure the DOM is loaded before the script runs
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      // Select all the option images
+      const optionImages = document.querySelectorAll('.option img');
+      const mainImage = document.querySelector('.main_image img');
+      
+      // Hover effect to change the main image
+      optionImages.forEach((img) => {
+        img.addEventListener('mouseover', function () {
+          mainImage.src = this.src; // Change the main image to the hovered thumbnail
+          mainImage.style.transform = 'scale(1.1)'; // Add zoom effect on hover
+          mainImage.style.transition = 'transform 0.3s ease'; // Smooth transition effect
+        });
+        
+        img.addEventListener('mouseout', function () {
+          mainImage.style.transform = 'scale(1)'; // Reset the zoom effect
+        });
+      });
+      
+      // Handle the "Add to Cart" button functionality
+      const addToCartButton = document.getElementById('addToCartButton');
+      
+      addToCartButton.addEventListener('click', function () {
+        this.style.cursor = 'pointer'; // Change cursor to pointer
+        this.textContent = 'Added to Cart!'; // Change button text
+        this.style.backgroundColor = '#4CAF50'; // Change button color to green
+        
+        // Show a simple alert for cart addition
+        alert('Item has been added to the cart!');
+      });
+
+      // Handle color selection functionality
+      const colorOptions = document.querySelectorAll('.color-option');
+      
+      colorOptions.forEach((color) => {
+        color.addEventListener('click', function() {
+          const selectedColor = this.style.background;
+          alert(`You selected a color: ${selectedColor}`);
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>
